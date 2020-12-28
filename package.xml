@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <author> Tamir Kariv 312573934 </author>
+  <author> Tamir Kariv </author>
   <name>coverage</name>
   <version>0.0.0</version>
   <description>The coverage package</description>
