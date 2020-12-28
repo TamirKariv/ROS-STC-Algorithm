@@ -1,0 +1,29 @@
+<launch> 
+   <!-- Run Gazebo with turtlebot -->
+   <param name="/use_sim_time" value="true" />    
+   <include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch"/>  
+
+
+  <param name="goal_x" value="2" />
+  <param name="goal_y" value="-2" />
+  <param name="goal_theta" value="180" />
+
+   <!-- Load existing map -->
+   <arg name = "map_file" default = "$(find turtlebot_gazebo)/maps/playground.pgm"/>      
+   <node name="map_server2" pkg="map_server" type="map_server" args = "$(arg map_file) 0.05"/>
+
+   <!-- Publish a static transformation between /odom and /map -->
+  <node name="tf" pkg="tf" type="static_transform_publisher" args="6.9 5.9 0.0 0.0 0.0 0.0 /map /odom 100" />
+
+
+
+
+   <!-- Run load_map node -->
+   <node name="load_map" pkg="coverage" type="coverage.py" output="screen" cwd="node" /> 
+
+
+
+
+
+</launch>
+
